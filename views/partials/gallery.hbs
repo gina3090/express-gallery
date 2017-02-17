@@ -1,0 +1,15 @@
+{{#if gallery}}
+  <div class="gallery">
+    <img src='{{gallery.link}}'</>
+    <p>{{gallery.author}}</p>
+    <p>{{gallery.description}}</p>
+  </div>
+{{/if}}
+
+{{#each galleries}}
+  <div class="gallery">
+    <img src='{{link}}'</>
+    <p>{{author}}</p>
+    <p>{{description}}</p>
+  </div>
+{{/each}}
