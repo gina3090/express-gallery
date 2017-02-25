@@ -1,15 +1,58 @@
-{{#if gallery}}
-  <div class="gallery">
-    <img src='{{gallery.link}}'</>
-    <p>{{gallery.author}}</p>
-    <p>{{gallery.description}}</p>
-  </div>
-{{/if}}
+<div class="container">
 
-{{#each galleries}}
-  <div class="gallery">
-    <img src='{{link}}'</>
-    <p>{{author}}</p>
-    <p>{{description}}</p>
+  {{#if gallery}}
+    <div class="gallery">
+      <div class="photo">
+        <img src='{{gallery.link}}'</>
+      </div>
+      <div class="photo-text">
+        <p>{{gallery.author}}</p>
+        <p>{{gallery.description}}</p>
+      </div>
+    </div>
+
+  <div class="buttons">
+    <form action="/gallery/{{gallery.id}}/edit" method="GET">
+      <div id="edit-button">
+        <br>
+        <button type="submit">Edit Photo</button>
+      </div>
+    </form>
+    <form action="/gallery/{{gallery.id}}/?_method=DELETE" method="POST">
+      <div id="delete-button">
+        <br>
+        <button type="submit">Delete Photo</button>
+      </div>
+    </form>
+    <form action="/gallery" method="GET">
+      <div id="gallery-button">
+        <br>
+        <button type="submit">Back to Gallery</button>
+      </div>
+    </form>
   </div>
-{{/each}}
+  {{/if}}
+
+  {{#each galleries}}
+    <div class="galleries">
+      <div class="photos">
+        <a href="/gallery/{{id}}">
+          <img src='{{link}}'</>
+        </a>
+      </div>
+      <div class="photos-text">
+        <p>{{author}}</p>
+        <p>{{description}}</p>
+      </div>
+    </div>
+  {{/each}}
+
+</div>
+
+<div class="buttons">
+  <form action="/gallery/new" method="GET">
+    <div id="new-button">
+      <br>
+      <button type="submit">New Photo</button>
+    </div>
+</div>
