@@ -10,6 +10,7 @@ const RedisStore = require('connect-redis')(session);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
+const logout = require('express-passport-logout');
 
 const db = require('./models');
 const Users = db.Users;
@@ -80,5 +81,7 @@ app.post('/login', passport.authenticate('local', {
   successRedirect: '/gallery',
   failureRedirect: '/login'
 }));
+ 
+app.get('/logout', logout());
 
 module.exports = app;
