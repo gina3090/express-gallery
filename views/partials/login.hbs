@@ -1,12 +1,13 @@
 <form action="/login" method="POST">
-    <div>
-        <br>
-        <label>Username:</label>
-        <input type="text" name="username"/>
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
+    <div class="login-info">
+        <div id="user-info">
+            <label>Username:</label>
+            <input type="text" name="username"/>
+        </div>
+        <div id="pass-info">
+            <label>Password:</label>
+            <input type="password" name="password"/>
+        </div>
     </div>
     <div id="sign-in-button">
         <br>
@@ -15,8 +16,9 @@
 </form>
 
 <form action="/login/new" method="GET">
-    <div id="new-user-button">
-        <br>
-        <input type="submit" value="New User"/>
+    <div class="buttons">
+        <div id="new-user-button">
+            <input type="submit" value="New User"/>
+        </div>
     </div>
 </form>

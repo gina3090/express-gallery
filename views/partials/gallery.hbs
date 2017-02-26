@@ -3,7 +3,7 @@
   {{#if gallery}}
     <div class="gallery">
       <div class="photo">
-        <img src='{{gallery.link}}'</>
+        <img src='{{gallery.link}}'/>
       </div>
       <div class="photo-text">
         <p>{{gallery.author}}</p>
@@ -11,33 +11,41 @@
       </div>
     </div>
 
-  <div class="buttons">
-    <form action="/gallery/{{gallery.id}}/edit" method="GET">
-      <div id="edit-button">
-        <br>
-        <button type="submit">Edit Photo</button>
+    <div class="column">
+      <div class="column-photo">
+        <img src='http://1.bp.blogspot.com/-AYcxxR69zFQ/T3fUdcOO16I/AAAAAAAALRA/fOGioxnf_RM/s1600/rubik05.jpeg'/>
+        <img src='https://news.artnet.com/app/news-upload/2015/06/getty.jpg'/>
+        <img src='http://europeantrips.org/wp-content/uploads/2012/03/The-Louvre-Museum.jpg'/>
       </div>
-    </form>
-    <form action="/gallery/{{gallery.id}}/?_method=DELETE" method="POST">
-      <div id="delete-button">
-        <br>
-        <button type="submit">Delete Photo</button>
-      </div>
-    </form>
-    <form action="/gallery" method="GET">
-      <div id="gallery-button">
-        <br>
-        <button type="submit">Back to Gallery</button>
-      </div>
-    </form>
-  </div>
+    </div>
+  
+    <div class="modify-buttons">
+      <form action="/gallery/{{gallery.id}}/edit" method="GET">
+        <div id="edit-button">
+          <br>
+          <button type="submit">Edit Photo</button>
+        </div>
+      </form>
+      <form action="/gallery/{{gallery.id}}/?_method=DELETE" method="POST">
+        <div id="delete-button">
+          <br>
+          <button type="submit">Delete Photo</button>
+        </div>
+      </form>
+      <form action="/gallery" method="GET">
+        <div id="gallery-button">
+          <br>
+          <button type="submit">Back to Gallery</button>
+        </div>
+      </form>
+    </div>
   {{/if}}
 
   {{#each galleries}}
     <div class="galleries">
       <div class="photos">
         <a href="/gallery/{{id}}">
-          <img src='{{link}}'</>
+          <img src='{{link}}'/>
         </a>
       </div>
       <div class="photos-text">
@@ -56,10 +64,12 @@
       <button type="submit">New Photo</button>
     </div>
   </form>
-  <form action="/logout" method="GET">
-    <div id="logout-button">
-      <br>
-      <button type="submit">Log Out</button>
-    </div>
-  </form>
 </div>
+
+<form action="/logout" method="GET">
+  <div id="logout-button">
+    <br>
+    <br>
+    <button type="submit">Log Out</button>
+  </div>
+</form>

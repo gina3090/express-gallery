@@ -15,6 +15,9 @@ const logout = require('express-passport-logout');
 const db = require('./models');
 const Users = db.Users;
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const user = require('./routes/user');
 const gallery = require('./routes/gallery');
 
@@ -35,25 +38,35 @@ app.use(cookieParser());
 
 app.use(session({
   store: new RedisStore(),
-  secret: CONFIG.SESSION_SECRET
+  secret: CONFIG.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy(
-  function (username, password, done) {
+  function(username, password, done) {
     Users.findOne({
       where: {
-        username: username,
-        password: password
+        username: username
       }
     })
     .then((user) => {
-      if(!user) {
-        return done(null, false);
+      if(user === null) {
+        return done(null, false, {message: 'Incorrect username'});
+      } else {
+        bcrypt.compare(password, user.password).then(res => {
+          if(res) {
+            return done(null, user);
+          } else {
+            return done(null, false, {message: 'Incorrect password'});
+          }
+        });
       }
-      return done(null, user);
+    }).catch(err => {
+      console.log('error: ', err);
     });
   }
 ));

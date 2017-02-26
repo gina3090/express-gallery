@@ -71,40 +71,101 @@ table {
 .clearfix {
   *zoom: 1; }
 
-html {
-  margin-left: 100px;
-  margin-right: 100px;
-  padding-bottom: 50px;
-  padding-top: 50px;
-  display: flex; }
+@media screen and (max-width: 500px) {
+  html {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 25px;
+    padding-top: 25px; } }
 
-.header {
-  border-top: 1px dotted #c6c6c6;
-  border-bottom: 1px solid #c6c6c6;
-  height: 500px; }
+@media screen and (max-width: 500px) {
+  .header {
+    display: flex;
+    justify-content: center;
+    height: 50px; } }
 
-#header-title, #header-blurb {
-  padding: 10px; }
+@media screen and (max-width: 500px) {
+  .container {
+    flex-direction: column;
+    padding-left: 15px; } }
 
-#header-title {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 50px;
-  color: #7f7a80;
-  float: left;
-  margin-left: 25px; }
+@media screen and (max-width: 500px) {
+  #header-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #7f7a80; } }
 
-h1 {
-  padding-right: 25px;
-  border-right: 1px solid #c6c6c6; }
+@media screen and (max-width: 500px) {
+  #header-blurb {
+    display: none; } }
 
-#header-blurb {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  color: #c6c6c6;
-  padding-left: 50px;
-  padding-right: 50px;
-  position: relative; }
+@media screen and (max-width: 500px) {
+  .galleries {
+    padding-top: 15px; } }
+
+@media screen and (max-width: 500px) {
+  .photo {
+    width: 350px;
+    height: 200px;
+    display: inline-block; } }
+
+@media screen and (max-width: 500px) {
+  .photo img {
+    width: 100%;
+    height: auto; } }
+
+@media screen and (max-width: 500px) {
+  .column-photo {
+    display: none; }
+  .column-photo img {
+    display: none; } }
+
+@media screen and (min-width: 501px) {
+  html {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 50px;
+    padding-top: 50px; }
+  .header {
+    border-top: 1px dotted #c6c6c6;
+    border-bottom: 1px solid #c6c6c6;
+    height: 500px;
+    display: inline-block;
+    padding-bottom: 30px; }
+  #header-title, #header-blurb {
+    padding: 10px; }
+  #header-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    color: #7f7a80;
+    float: left;
+    margin-left: 50px;
+    padding: 25px; }
+  #header-blurb {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #8b939b;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
+    padding-top: 25px; }
+  h1 {
+    padding-right: 25px;
+    border-right: 1px solid #c6c6c6; }
+  .photo {
+    width: 880px;
+    height: 300px;
+    display: inline-block; }
+  .photo img {
+    width: 100%;
+    height: auto; }
+  .modify-buttons {
+    width: 1200px; }
+  #edit-button, #delete-button, #gallery-button {
+    padding-left: 15px;
+    margin-left: 10px; } }
 
 #header-img {
   width: 900px;
@@ -120,17 +181,21 @@ h1 {
   height: auto;
   padding-bottom: 20px; }
 
+.login-info {
+  padding-top: 20px; }
+
+#pass-info {
+  padding-top: 5px; }
+
 .container {
   display: flex;
   flex-flow: row wrap;
+  margin-right: 15px;
   justify-content: center; }
 
 .galleries {
   padding: 15px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
   display: inline-block; }
 
 .photos {
@@ -155,20 +220,38 @@ h1 {
   flex-wrap: wrap;
   display: inline-block; }
 
-.photo {
-  width: 850px;
-  height: 350px;
-  display: inline-block; }
-
-.photo img {
-  width: 100%;
-  height: auto; }
-
 .photo-text {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   color: #8b939b;
   display: block; }
 
-#enter-button, #new-button {
-  text-align: center; }
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+#enter-button {
+  padding: 20px; }
+
+#edit-button, #delete-button, #gallery-button {
+  padding-left: 15px;
+  margin-left: 10px; }
+
+#logout-button {
+  text-align: right; }
+
+.column {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  display: inline-block; }
+
+.column-photo {
+  width: 280px;
+  height: 280px; }
+
+.column-photo img {
+  width: 100%;
+  height: auto;
+  padding-top: 15px; }
