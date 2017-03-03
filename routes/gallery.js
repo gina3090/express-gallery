@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const Gallery = db.Gallery;
+const Galleries = db.Galleries;
 
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
@@ -13,36 +13,44 @@ function isAuthenticated(req, res, next) {
   }
 }
 
-router.get('/new', isAuthenticated, (req, res) => {
+router.use(function (req, res, next) {
+  if(req.method !== 'GET') {
+    isAuthenticated(req, res, next);
+  } else {
+    next();    
+  }
+});
+
+router.get('/new', (req, res) => {
   res.render('partials/new-gallery');
 });
 
-router.get('/:id', isAuthenticated, (req, res) => {
-  Gallery.findById(req.params.id)
+router.get('/:id', (req, res) => {
+  Galleries.findById(req.params.id)
     .then((gallery) => {
       res.render('partials/gallery', {gallery: gallery});
     })
     .catch(err => console.error(err));
 });
 
-router.get('/:id/edit', isAuthenticated, (req, res) => {
-  Gallery.findById(req.params.id)
+router.get('/:id/edit', (req, res) => {
+  Galleries.findById(req.params.id)
     .then((gallery) => {
       res.render('partials/edit-gallery', {gallery: gallery});
     })
     .catch(err => console.error(err));
 });
 
-router.get('/', isAuthenticated, (req, res) => {
-  Gallery.findAll()
+router.get('/', (req, res) => {
+  Galleries.findAll()
     .then((gallery) => {
       res.render('partials/gallery', {galleries: gallery});
     })
     .catch(err => console.error(err));
 });
 
-router.post('/new', isAuthenticated, (req, res) => {
-  Gallery.create({
+router.post('/new', (req, res) => {
+  Galleries.create({
     link: req.body.link,
     author: req.body.author,
     description: req.body.description
@@ -53,16 +61,16 @@ router.post('/new', isAuthenticated, (req, res) => {
     .catch(err => console.error(err));
 });
 
-router.get('/:id/edit', isAuthenticated, (req, res) => {
-  Gallery.findById(req.params.id)
+router.get('/:id/edit', (req, res) => {
+  Galleries.findById(req.params.id)
   .then((gallery) => {
     res.render('partials/edit-gallery', {gallery: gallery});
   })
   .catch(err => console.error(err));
 });
 
-router.put('/:id/edit', isAuthenticated, (req, res) => {
-  Gallery.update({
+router.put('/:id/edit', (req, res) => {
+  Galleries.update({
     link: req.body.link,
     author: req.body.author,
     description: req.body.description
@@ -77,8 +85,8 @@ router.put('/:id/edit', isAuthenticated, (req, res) => {
   .catch(err => console.error(err));
 });
 
-router.delete('/:id', isAuthenticated, (req, res) => {
-  Gallery.destroy({
+router.delete('/:id', (req, res) => {
+  Galleries.destroy({
     where: {
       id: req.params.id
     }
