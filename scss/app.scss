@@ -27,7 +27,7 @@
 
 @media screen and (max-width: 500px) {
   #header-title {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Special Elite', cursive;
     font-weight: bold;
     font-size: 40px;
     color: rgb(127, 122, 128);
@@ -36,6 +36,12 @@
 
 @media screen and (max-width: 500px) {
   #header-blurb {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #header-img img {
     display: none;
   }
 }
@@ -61,7 +67,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1404px) {
   .column-photo {
     display: none;
   }
@@ -93,7 +99,7 @@
   }
 
   #header-title {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Special Elite', cursive;
     font-weight: bold;
     font-size: 50px;
     color: rgb(127, 122, 128);
@@ -103,14 +109,14 @@
   }
 
   #header-blurb {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  color: rgb(139, 147, 155);
-  padding-left: 50px;
-  padding-right: 50px;
-  position: relative;
-  padding-top: 25px;
-}
+    font-family: 'Special Elite', cursive;
+    font-size: 15px;
+    color: rgb(139, 147, 155);
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
+    padding-top: 25px;
+  }
 
   h1 {
     padding-right: 25px;
@@ -132,7 +138,7 @@
     width: 1200px;
   }
 
-  #edit-button, #delete-button, #gallery-button {
+  #edit-dir-button, #delete-button, #back-button {
     padding-left: 15px;
     margin-left: 10px;
   } 
@@ -188,7 +194,7 @@
 }
 
 .photos-text {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Architects Daughter', cursive;
   font-size: 15px;
   color: rgb(139, 147, 155);
   display: block;
@@ -203,7 +209,7 @@
 }
 
 .photo-text {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Architects Daughter', cursive;
   font-size: 15px;
   color: rgb(139, 147, 155);
   display: block;
@@ -219,7 +225,7 @@
   padding: 20px;
 }
 
-#edit-button, #delete-button, #gallery-button {
+#edit-dir-button, #delete-button, #back-button {
   padding-left: 15px;
   margin-left: 10px;
 }
@@ -236,12 +242,33 @@
 }
 
 .column-photo {
-  width: 280px;
-  height: 280px;
+  width: 275px;
+  height: 275px;
 }
 
 .column-photo img {
   width: 100%;
   height: auto;
   padding-top: 15px;
+}
+
+label {
+  font-family: 'Architects Daughter', cursive;
+}
+
+#enter-button input[type="submit"], #sign-in-button input[type="submit"], #new-user-button input[type="submit"] {
+  font: 1em 'Architects Daughter', cursive;
+  background-color: rgb(139, 147, 155);
+}
+
+#new-button button[type="submit"], #logout-button button[type="submit"], #edit-dir-button button[type="submit"],
+#delete-button button[type="submit"], #back-button button[type="submit"], {
+  font: 1em 'Architects Daughter', cursive;
+  background-color: rgb(139, 147, 155);
+  color: white;
+}
+
+#post-button button[type="submit"], #edit-button button[type="submit"] {
+  font: 1em 'Architects Daughter', cursive;
+  background-color: rgb(139, 147, 155);
 }

@@ -6,8 +6,8 @@
         <img src='{{gallery.link}}'/>
       </div>
       <div class="photo-text">
-        <p>{{gallery.author}}</p>
-        <p>{{gallery.description}}</p>
+        <p>Posted by: {{gallery.author}}</p>
+        <p>Description: {{gallery.description}}</p>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
   
     <div class="modify-buttons">
       <form action="/gallery/{{gallery.id}}/edit" method="GET">
-        <div id="edit-button">
+        <div id="edit-dir-button">
           <br>
           <button type="submit">Edit Photo</button>
         </div>
@@ -33,7 +33,7 @@
         </div>
       </form>
       <form action="/gallery" method="GET">
-        <div id="gallery-button">
+        <div id="back-button">
           <br>
           <button type="submit">Back to Gallery</button>
         </div>
@@ -49,7 +49,7 @@
         </a>
       </div>
       <div class="photos-text">
-        <p>{{author}}</p>
+        <p>Posted by: {{author}}</p>
         <p>{{description}}</p>
       </div>
     </div>

@@ -1,10 +1,13 @@
 <form method="POST" action="/gallery/{{gallery.id}}/edit?_method=PUT">
-  Author
+  <label>Author</label>
   <input type="text" name="author" value="{{gallery.author}}">
-  Link
+  <label>Link</label>
   <input type="text" name="link" value="{{gallery.link}}">
-  Description
+  <label>Description</label>
   <input type="text" name="description" value="{{gallery.description}}">
   <input type="hidden" name="_method" value="PUT">
-  <button type="submit">Edit</button>
+  <div id="edit-button">
+    <br>
+    <button type="submit">Edit</button>
+  </div>
 </form>

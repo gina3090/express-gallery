@@ -1,10 +1,13 @@
 <form method="POST" action="/gallery/new">
-  Author
+  <label>Author</label>
   <input type="text" name="author">
-  Link
+  <label>Link</label>
   <input type="text" name="link">
-  Description
+  <label>Description</label>
   <input type="text" name="description">
   <input type="hidden" name="_method" value="POST">
-  <button type="submit">Submit</button>
+  <div id="post-button">
+    <br>
+    <button type="submit">Post</button>
+  </div>
 </form>
