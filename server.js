@@ -18,6 +18,8 @@ const Users = db.Users;
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const flash = require('connect-flash');
+
 const user = require('./routes/user');
 const gallery = require('./routes/gallery');
 
@@ -42,6 +44,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -72,19 +76,29 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function(user, done) {
-  return done(null, user);
+  return done(null, { 
+    id: user.id,
+    username: user.username
+  });
 });
 
 passport.deserializeUser(function(user, done) {
-  return done(null, user);
+  Users.findOne({
+    where: {
+      id: user.id
+    }
+  })
+  .then((user) => {
+    return done(null, user);
+  });
 });
-
-app.use('/login', user);
-app.use('/gallery', gallery);
 
 app.get('/', (req, res) => {
   res.render('index');
 });
+
+app.use('/login', user);
+app.use('/gallery', gallery);
 
 app.get('/login', (req, res) => {
   res.render('partials/login');
@@ -94,7 +108,10 @@ app.post('/login', passport.authenticate('local', {
   successRedirect: '/gallery',
   failureRedirect: '/login'
 }));
- 
-app.get('/logout', logout());
+
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = app;
