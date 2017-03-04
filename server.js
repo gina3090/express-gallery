@@ -59,13 +59,13 @@ passport.use(new LocalStrategy(
     })
     .then((user) => {
       if(user === null) {
-        return done(null, false, {message: 'Incorrect username'});
+        return done(null, false);
       } else {
         bcrypt.compare(password, user.password).then(res => {
           if(res) {
             return done(null, user);
           } else {
-            return done(null, false, {message: 'Incorrect password'});
+            return done(null, false, {message: 'Oops! Incorrect password...'});
           }
         });
       }
@@ -101,12 +101,13 @@ app.use('/login', user);
 app.use('/gallery', gallery);
 
 app.get('/login', (req, res) => {
-  res.render('partials/login');
+  res.render('partials/login', {message: req.flash('error')});
 });
 
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/gallery',
-  failureRedirect: '/login'
+  failureRedirect: '/login',
+  failureFlash: true
 }));
 
 app.get('/logout', (req, res) => {
